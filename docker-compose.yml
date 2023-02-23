@@ -2,18 +2,17 @@ version: "3.8"
 services:
   api:
     build: ./api
-    container_name: api_container
+    container_name: api
     ports:
       - '4000:4000'
-    volumes:
-      - /api:/app
-      - /app/node_modules
+    expose:
+      - '4000'
   frontend:
     build: ./gui
-    container_name: gui_container
+    container_name: gui
     ports:
       - '3000:3000'
+    expose:
+      - '3000'
     stdin_open: true
     tty: true
-
-# docker run --name myapp_nodemon -p 4000:4000 --rm -v /home/rishi/devspace/dockerlearn:/app -v /app/node_modules myapp:nodemon
